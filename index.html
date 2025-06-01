@@ -14,15 +14,27 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0a0f1c, #0d111f);
+      background: #0a0f1c;
       color: #f9f9f9;
       min-height: 140vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      overflow-x: hidden;
       position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Video */
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -3;
+      opacity: 0.12;
     }
 
     /* Neon Moving Lines */
@@ -31,7 +43,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      z-index: 0;
+      z-index: -2;
       pointer-events: none;
     }
 
@@ -154,6 +166,13 @@
   </style>
 </head>
 <body>
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="3194277-hd_1920_1080_30fps.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Neon Lines -->
   <div class="lines">
     <div class="line"></div>
     <div class="line"></div>
@@ -161,6 +180,7 @@
     <div class="line"></div>
   </div>
 
+  <!-- Main Container -->
   <div class="container">
     <img src="kill-chaos-cover.jpg" alt="Kill Chaos Book Cover" />
     <h1>Kill Chaos: Think Like a Monk</h1>
@@ -168,7 +188,7 @@
     <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1" download class="download-btn">Download Now</a>
 
     <div class="extra-info">
-      This book is your weapon against mental clutter and chaos. Inside, you'll discover how to build a mindset of calm strength, focus like a monk, and make decisions with clarity. It's time to stop overthinking and start moving with intention.
+      This book is your guide to building a calm, focused, powerful mindset. It helps you cut through mental noise, take action without hesitation, and stay grounded like a monk in a chaotic world. Free your mind and move with intention.
     </div>
   </div>
 </body>
