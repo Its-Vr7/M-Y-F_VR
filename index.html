@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kill Chaos — eBook Download</title>
-  
+  <title>Kill Chaos — Free eBook Download</title>
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Download Kill Chaos: Think Like a Monk — a free eBook to help you master focus, purpose, and clarity in a chaotic world.">
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Kill Chaos is a powerful guide to mastering focus, building inner stillness, and thinking like a monk. Download your free copy now.">
   <meta property="og:title" content="Kill Chaos — Free eBook Download">
   <meta property="og:description" content="Think like a monk. Move with purpose. Become unstoppable.">
   <meta property="og:image" content="kill-chaos-cover.jpg">
   <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0f1c">
 
   <style>
     * {
@@ -28,19 +29,21 @@
       color: #f9f9f9;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       padding: 2rem;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
 
     .lines {
-      position: absolute;
+      position: fixed;
       width: 100%;
       height: 100%;
       overflow: hidden;
       z-index: 0;
+      top: 0;
+      left: 0;
     }
 
     .lines::before, .lines::after {
@@ -61,12 +64,8 @@
     }
 
     @keyframes move {
-      0% {
-        left: -100%;
-      }
-      100% {
-        left: 100%;
-      }
+      0% { left: -100%; }
+      100% { left: 100%; }
     }
 
     .container {
@@ -77,7 +76,7 @@
       max-width: 850px;
       width: 100%;
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 3rem 2rem 4rem;
       position: relative;
       z-index: 1;
     }
@@ -122,6 +121,32 @@
       box-shadow: 0 10px 20px rgba(0, 255, 200, 0.25);
     }
 
+    .ebook-description {
+      font-size: 1rem;
+      color: #bbbbbb;
+      margin-top: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .ebook-description ul {
+      margin: 1rem 0 1.5rem;
+      padding-left: 1.2rem;
+    }
+
+    .ebook-description li {
+      margin-bottom: 0.5rem;
+      list-style: disc;
+    }
+
+    .scroll-space {
+      height: 600px; /* Blank scrollable space */
+      width: 100%;
+    }
+
     @media(max-width: 600px) {
       h1 {
         font-size: 2rem;
@@ -129,6 +154,16 @@
 
       .container img {
         width: 170px;
+      }
+
+      .ebook-description {
+        text-align: center;
+        font-size: 0.95rem;
+      }
+
+      .ebook-description ul {
+        text-align: left;
+        padding-left: 1.5rem;
       }
     }
   </style>
@@ -140,8 +175,22 @@
     <img src="kill-chaos-cover.jpg" alt="Cover of the Kill Chaos eBook: Think Like a Monk" />
     <h1>Kill Chaos: Think Like a Monk</h1>
     <p>Think like a monk. Move with purpose. Become unstoppable. Download your free copy now and change your mindset forever.</p>
+    
     <a href="your-ebook.pdf" download class="download-btn" aria-label="Download Kill Chaos eBook">Download Now</a>
+    
+    <div class="ebook-description">
+      <p><strong>Kill Chaos</strong> is your guide to mastering the mind in a noisy world. Inspired by timeless monk philosophy and modern focus techniques, this book shows you how to:</p>
+      <ul>
+        <li>Silence mental noise and overcome distractions</li>
+        <li>Build a calm, focused daily routine</li>
+        <li>Stay grounded under pressure</li>
+        <li>Find clarity and move with intention</li>
+      </ul>
+      <p>Whether you're battling stress, procrastination, or self-doubt, this book gives you a mindset that cuts through the chaos and gets results.</p>
+    </div>
   </div>
+
+  <div class="scroll-space"></div>
 
   <noscript>
     <p style="color: #ccc; text-align: center; margin-top: 2rem;">
