@@ -54,39 +54,19 @@
       background: #00ffe1;
       box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
       opacity: 0.08;
-      animation: moveLine 6s linear infinite;
+      animation: moveLine 15s linear infinite;
     }
 
-    .line:nth-child(1) {
-      top: 20%;
-      transform: rotate(30deg);
-      animation-delay: 0s;
-    }
-
-    .line:nth-child(2) {
-      top: 40%;
-      transform: rotate(-30deg);
-      animation-delay: 1.5s;
-    }
-
-    .line:nth-child(3) {
-      top: 60%;
-      transform: rotate(25deg);
-      animation-delay: 3s;
-    }
-
-    .line:nth-child(4) {
-      top: 80%;
-      transform: rotate(-25deg);
-      animation-delay: 4.5s;
-    }
+    .line:nth-child(1) { top: 20%; transform: rotate(30deg); animation-delay: 0s; }
+    .line:nth-child(2) { top: 40%; transform: rotate(-30deg); animation-delay: 1.5s; }
+    .line:nth-child(3) { top: 60%; transform: rotate(25deg); animation-delay: 3s; }
+    .line:nth-child(4) { top: 80%; transform: rotate(-25deg); animation-delay: 4.5s; }
 
     @keyframes moveLine {
       0% { left: -100%; }
       100% { left: 100%; }
     }
 
-    /* Container Styling */
     .container {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -98,6 +78,12 @@
       padding: 3rem 2rem 6rem;
       position: relative;
       z-index: 1;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .container img {
@@ -105,6 +91,7 @@
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
       margin-bottom: 2rem;
+      animation: fadeIn 2s ease forwards;
     }
 
     h1 {
@@ -114,6 +101,15 @@
       background: linear-gradient(to right, #00e5ff, #00ffa6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .typed-text {
+      color: #00ffe1;
+      font-size: 1.2rem;
+      font-weight: 500;
+      height: 24px;
+      margin-bottom: 2rem;
+      min-height: 32px;
     }
 
     p {
@@ -148,24 +144,19 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      animation: fadeIn 2s ease forwards;
     }
 
     @media(max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .container img {
-        width: 170px;
-      }
-
-      .extra-info {
-        font-size: 0.9rem;
-      }
+      h1 { font-size: 2rem; }
+      .container img { width: 170px; }
+      .typed-text { font-size: 1rem; }
+      .extra-info { font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
+
   <!-- Background Video -->
   <video autoplay muted loop playsinline id="bgVideo">
     <source src="3194277-hd_1920_1080_30fps.mp4" type="video/mp4">
@@ -184,6 +175,7 @@
   <div class="container">
     <img src="kill-chaos-cover.jpg" alt="Kill Chaos Book Cover" />
     <h1>Kill Chaos: Think Like a Monk</h1>
+    <div class="typed-text" id="typed"></div>
     <p>Think like a monk. Move with purpose. Become unstoppable.</p>
     <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1" download class="download-btn">Download Now</a>
 
@@ -191,5 +183,41 @@
       This book is your guide to building a calm, focused, powerful mindset. It helps you cut through mental noise, take action without hesitation, and stay grounded like a monk in a chaotic world. Free your mind and move with intention.
     </div>
   </div>
+
+  <!-- JavaScript for slow video + typed effect -->
+  <script>
+    // Slow down the background video
+    document.addEventListener("DOMContentLoaded", function () {
+      const video = document.getElementById("bgVideo");
+      if (video) video.playbackRate = 0.5;
+    });
+
+    // Animated typing effect
+    const words = ["Focus Your Mind.", "Eliminate Distractions.", "Master Your Inner Peace."];
+    let i = 0, j = 0, currentWord = '', isDeleting = false;
+
+    function type() {
+      const element = document.getElementById('typed');
+      if (!element) return;
+
+      currentWord = words[i];
+      element.textContent = currentWord.substring(0, j) + (j < currentWord.length ? "|" : "");
+
+      if (!isDeleting && j < currentWord.length) {
+        j++;
+        setTimeout(type, 100);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(type, 60);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+        setTimeout(type, 1200);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", type);
+  </script>
+
 </body>
 </html>
