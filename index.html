@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kill Chaos — eBook Download</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Download Kill Chaos: Think Like a Monk — a free eBook to help you master focus, purpose, and clarity in a chaotic world.">
+  <meta property="og:title" content="Kill Chaos — Free eBook Download">
+  <meta property="og:description" content="Think like a monk. Move with purpose. Become unstoppable.">
+  <meta property="og:image" content="kill-chaos-cover.jpg">
+  <meta property="og:type" content="website">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0f1c, #0d111f);
+      color: #f9f9f9;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .lines::before, .lines::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #00ffe1, transparent);
+      opacity: 0.06;
+      animation: move 6s linear infinite;
+      transform: rotate(25deg);
+    }
+
+    .lines::after {
+      top: 70%;
+      animation-delay: 3s;
+      transform: rotate(-25deg);
+    }
+
+    @keyframes move {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.07);
+      max-width: 850px;
+      width: 100%;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container img {
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #00e5ff, #00ffa6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      color: #cccccc;
+    }
+
+    a.download-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #000;
+      background: linear-gradient(135deg, #00ffa6, #00e5ff);
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    a.download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 255, 200, 0.25);
+    }
+
+    @media(max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .container img {
+        width: 170px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lines"></div>
+
+  <div class="container">
+    <img src="kill-chaos-cover.jpg" alt="Cover of the Kill Chaos eBook: Think Like a Monk" />
+    <h1>Kill Chaos: Think Like a Monk</h1>
+    <p>Think like a monk. Move with purpose. Become unstoppable. Download your free copy now and change your mindset forever.</p>
+    <a href="your-ebook.pdf" download class="download-btn" aria-label="Download Kill Chaos eBook">Download Now</a>
+  </div>
+
+  <noscript>
+    <p style="color: #ccc; text-align: center; margin-top: 2rem;">
+      JavaScript is disabled. <a href="your-ebook.pdf" download style="color: #00ffe1;">Click here to download the eBook</a>.
+    </p>
+  </noscript>
+</body>
+  </html>
