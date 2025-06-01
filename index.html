@@ -2,17 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kill Chaos — Free eBook Download</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <meta name="description" content="Download your free copy of Kill Chaos, a mindset-changing guide to help you think like a monk and conquer distraction." />
-  <meta property="og:title" content="Kill Chaos — Free eBook Download" />
-  <meta property="og:description" content="Think like a monk. Move with purpose. Become unstoppable." />
-  <meta property="og:image" content="kill-chaos-cover.jpg" />
-  <meta name="theme-color" content="#0a0f1c" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -23,111 +15,127 @@
 
     body {
       background: linear-gradient(135deg, #0a0f1c, #0d111f);
-      color: #f2f2f2;
-      min-height: 100vh;
+      color: #f9f9f9;
+      min-height: 140vh;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 3rem 1.5rem 6rem;
+      padding: 2rem;
       overflow-x: hidden;
       position: relative;
     }
 
-    .background-float {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      background: radial-gradient(circle at 30% 30%, #00ffa6 5%, transparent 25%),
-                  radial-gradient(circle at 70% 60%, #00e5ff 5%, transparent 25%);
-      background-size: cover;
-      z-index: 0;
-      animation: float 20s linear infinite alternate;
-      opacity: 0.03;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-10%, -10%); }
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 24px;
-      box-shadow: 0 0 60px rgba(0, 255, 255, 0.08);
-      max-width: 900px;
+    /* Neon Moving Lines */
+    .lines {
+      position: absolute;
       width: 100%;
-      padding: 3rem 2rem;
-      z-index: 1;
-      position: relative;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .line {
+      position: absolute;
+      width: 200%;
+      height: 2px;
+      background: #00ffe1;
+      box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+      opacity: 0.08;
+      animation: moveLine 6s linear infinite;
+    }
+
+    .line:nth-child(1) {
+      top: 20%;
+      transform: rotate(30deg);
+      animation-delay: 0s;
+    }
+
+    .line:nth-child(2) {
+      top: 40%;
+      transform: rotate(-30deg);
+      animation-delay: 1.5s;
+    }
+
+    .line:nth-child(3) {
+      top: 60%;
+      transform: rotate(25deg);
+      animation-delay: 3s;
+    }
+
+    .line:nth-child(4) {
+      top: 80%;
+      transform: rotate(-25deg);
+      animation-delay: 4.5s;
+    }
+
+    @keyframes moveLine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Container Styling */
+    .container {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.07);
+      max-width: 850px;
+      width: 100%;
       text-align: center;
+      padding: 3rem 2rem 6rem;
+      position: relative;
+      z-index: 1;
     }
 
     .container img {
-      width: 260px;
-      border-radius: 14px;
-      box-shadow: 0 15px 35px rgba(0, 255, 255, 0.15);
-      margin-bottom: 2.5rem;
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+      margin-bottom: 2rem;
     }
 
     h1 {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       font-weight: 700;
       background: linear-gradient(to right, #00e5ff, #00ffa6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
     }
 
-    p.tagline {
-      font-size: 1.25rem;
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
       color: #cccccc;
-      margin-bottom: 2.5rem;
     }
 
     a.download-btn {
       display: inline-block;
-      padding: 1.1rem 3rem;
-      font-size: 1.05rem;
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #000;
       background: linear-gradient(135deg, #00ffa6, #00e5ff);
       border: none;
       border-radius: 50px;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     a.download-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(0, 255, 200, 0.25);
+      box-shadow: 0 10px 20px rgba(0, 255, 200, 0.25);
     }
 
-    .ebook-description {
-      margin-top: 3rem;
-      text-align: left;
-      max-width: 640px;
+    .extra-info {
+      margin-top: 2rem;
+      color: #aaa;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      color: #bbbbbb;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .ebook-description ul {
-      margin: 1rem 0 1.5rem;
-      padding-left: 1.4rem;
-    }
-
-    .ebook-description li {
-      margin-bottom: 0.5rem;
-      list-style: disc;
-    }
-
-    .spacer {
-      height: 700px;
     }
 
     @media(max-width: 600px) {
@@ -136,45 +144,32 @@
       }
 
       .container img {
-        width: 180px;
+        width: 170px;
       }
 
-      .ebook-description {
-        font-size: 0.95rem;
-        text-align: center;
-      }
-
-      .ebook-description ul {
-        text-align: left;
-        padding-left: 1.5rem;
+      .extra-info {
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="background-float"></div>
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
 
   <div class="container">
     <img src="kill-chaos-cover.jpg" alt="Kill Chaos Book Cover" />
-    <h1>Kill Chaos</h1>
-    <p class="tagline">Think like a monk. Move with purpose. Become unstoppable.</p>
+    <h1>Kill Chaos: Think Like a Monk</h1>
+    <p>Think like a monk. Move with purpose. Become unstoppable.</p>
+    <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1" download class="download-btn">Download Now</a>
 
-    <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1" download class="download-btn">
-      Download Free eBook
-    </a>
-
-    <div class="ebook-description">
-      <p><strong>Kill Chaos</strong> is your guide to mastering the mind in a noisy world. Inspired by ancient monk wisdom and modern focus strategies, this book helps you:</p>
-      <ul>
-        <li>Silence distractions and mental noise</li>
-        <li>Build a focused, peaceful daily routine</li>
-        <li>Stay grounded and consistent under pressure</li>
-        <li>Find clarity, direction, and inner strength</li>
-      </ul>
-      <p>If you're tired of overthinking, procrastination, and noise — this book is your reset button.</p>
+    <div class="extra-info">
+      This book is your weapon against mental clutter and chaos. Inside, you'll discover how to build a mindset of calm strength, focus like a monk, and make decisions with clarity. It's time to stop overthinking and start moving with intention.
     </div>
   </div>
-
-  <div class="spacer"></div>
 </body>
 </html>
