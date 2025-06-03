@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Download free eBooks to sharpen your mind and eliminate chaos." />
   <title>Free eBook Downloads</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -11,217 +11,239 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Outfit', sans-serif;
-    }html, body {
-  background: #0a0f1c;
-  color: #f9f9f9;
-  height: 100%;
-  overflow-x: hidden;
-}
+    }
 
-#bgVideo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  z-index: -3;
-  opacity: 0.15;
-}
+    html, body {
+      height: 100%;
+      background: #0a0f1c;
+      color: #f9f9f9;
+      overflow-x: hidden;
+    }
 
-.lines {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -2;
-  pointer-events: none;
-}
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -3;
+      opacity: 0.15;
+    }
 
-.line {
-  position: absolute;
-  width: 200%;
-  height: 2px;
-  background: linear-gradient(90deg, red, lime, blue);
-  box-shadow: 0 0 10px red, 0 0 20px lime, 0 0 30px blue;
-  opacity: 0.2;
-  animation: moveLine 15s linear infinite;
-}
+    .lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+      pointer-events: none;
+    }
 
-.line:nth-child(1) { top: 20%; transform: rotate(30deg); animation-delay: 0s; }
-.line:nth-child(2) { top: 40%; transform: rotate(-30deg); animation-delay: 1.5s; }
-.line:nth-child(3) { top: 60%; transform: rotate(25deg); animation-delay: 3s; }
-.line:nth-child(4) { top: 80%; transform: rotate(-25deg); animation-delay: 4.5s; }
+    .line {
+      position: absolute;
+      width: 200%;
+      height: 3px;
+      background: linear-gradient(90deg, red, green, blue, red);
+      background-size: 300%;
+      animation: moveLine 12s linear infinite, glow 3s ease-in-out infinite;
+      opacity: 0.35;
+    }
 
-@keyframes moveLine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
+    .line:nth-child(1) { top: 20%; transform: rotate(30deg); animation-delay: 0s; }
+    .line:nth-child(2) { top: 40%; transform: rotate(-25deg); animation-delay: 1.5s; }
+    .line:nth-child(3) { top: 60%; transform: rotate(35deg); animation-delay: 3s; }
+    .line:nth-child(4) { top: 80%; transform: rotate(-30deg); animation-delay: 4.5s; }
 
-.slider {
-  display: flex;
-  width: 200%;
-  transition: transform 0.6s ease-in-out;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-}
+    @keyframes moveLine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
 
-.container {
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem 1.5rem 3rem;
-  margin: 0 auto 5rem;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.06);
-}
+    @keyframes glow {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.5; }
+    }
 
-.container img {
-  width: 180px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.12);
-  margin-bottom: 1.5rem;
-}
+    .slider {
+      display: flex;
+      width: 200%;
+      height: 100vh;
+      transition: transform 0.6s ease-in-out;
+    }
 
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  background: linear-gradient(to right, #00e5ff, #00ffa6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 2.5rem 2rem;
+      margin: auto;
+      margin-top: 4rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
+    }
 
-.typed-text {
-  color: #00ffe1;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  min-height: 28px;
-}
+    .container img {
+      width: 200px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 255, 255, 0.2);
+      margin-bottom: 1.5rem;
+    }
 
-p {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  color: #d0d0d0;
-}
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #00e5ff, #00ffa6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.7rem;
+    }
 
-a.download-btn {
-  display: inline-block;
-  padding: 0.9rem 2rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #000;
-  background: linear-gradient(135deg, #00ffa6, #00e5ff);
-  border: none;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .typed-text {
+      font-size: 1.1rem;
+      color: #00ffe1;
+      font-weight: 500;
+      min-height: 30px;
+      margin-bottom: 1.5rem;
+    }
 
-a.download-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 255, 200, 0.25);
-}
+    p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1.5rem;
+    }
 
-.extra-info {
-  margin-top: 1.5rem;
-  color: #aaa;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
+    a.download-btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: linear-gradient(135deg, #00ffa6, #00e5ff);
+      color: #000;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-@media(max-width: 600px) {
-  h1 { font-size: 1.6rem; }
-  .container img { width: 150px; }
-  .typed-text { font-size: 0.95rem; }
-  .extra-info { font-size: 0.8rem; }
-  .slider { flex-direction: column; width: 100%; transform: translateX(0) !important; }
-}
+    a.download-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 255, 200, 0.3);
+    }
 
+    .extra-info {
+      margin-top: 1.5rem;
+      color: #aaa;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .slider {
+        flex-direction: column;
+        height: auto;
+        transform: translateX(0) !important;
+      }
+      .container {
+        margin: 3rem auto;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Background Video -->
   <video autoplay muted loop playsinline id="bgVideo">
     <source src="3194277-hd_1920_1080_30fps.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
-  </video>  <div class="lines">
+  </video>
+
+  <!-- RGB Lines -->
+  <div class="lines">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-  </div>  <div class="slider" id="slider">
+  </div>
+
+  <!-- Swipable Slider -->
+  <div class="slider" id="slider">
     <!-- Book 1 -->
     <div class="container">
       <img src="kill-chaos-cover.jpg" alt="Kill Chaos eBook Cover" />
       <h1>Kill Chaos: Think Like a Monk</h1>
-      <div class="typed-text" id="typed"></div>
+      <div class="typed-text" id="typed1"></div>
       <p>Think like a monk. Move with purpose. Become unstoppable.</p>
       <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1"
-         class="download-btn" target="_blank" rel="noopener noreferrer">
+         class="download-btn" target="_blank">
         Download Now
       </a>
       <div class="extra-info">
         This book helps you build a calm, focused, and powerful mindset. Cut mental noise. Take action without hesitation. Stay grounded in a chaotic world.
       </div>
-    </div><!-- Book 2 -->
-<div class="container">
-  <img src="M-Y-F.jpg" alt="Master Yourself First eBook Cover" />
-  <h1>Master Yourself First</h1>
-  <p>Before you master life, master yourself. Discipline, clarity, and mental control start here.</p>
-  <a href="https://www.dropbox.com/scl/fi/76fvq4nrc1h0jw6blowa1/Master-Yourself-First.pdf?rlkey=39sjce8263zncsdsol3cjvhq1&st=l0p685in&dl=1"
-     class="download-btn" target="_blank" rel="noopener noreferrer">
-    Download Now
-  </a>
-  <div class="extra-info">
-    Learn to rule your mind, strengthen your willpower, and become emotionally unshakable. This guide is your foundation.
+    </div>
+
+    <!-- Book 2 -->
+    <div class="container">
+      <img src="M-Y-F.jpg" alt="Master Yourself First eBook Cover" />
+      <h1>Master Yourself First</h1>
+      <div class="typed-text" id="typed2"></div>
+      <p>Before you master life, master yourself. Discipline, clarity, and mental control start here.</p>
+      <a href="https://www.dropbox.com/scl/fi/76fvq4nrc1h0jw6blowa1/Master-Yourself-First.pdf?rlkey=39sjce8263zncsdsol3cjvhq1&st=l0p685in&dl=1"
+         class="download-btn" target="_blank">
+        Download Now
+      </a>
+      <div class="extra-info">
+        Learn to rule your mind, strengthen your willpower, and become emotionally unshakable. This guide is your foundation.
+      </div>
+    </div>
   </div>
-</div>
 
-  </div>  <script>
-    const words = ["Focus Your Mind.", "Eliminate Distractions.", "Master Your Inner Peace."];
-    let i = 0, j = 0, isDeleting = false;
+  <!-- Typing Effect Script -->
+  <script>
+    const texts = [
+      { id: "typed1", words: ["Focus Your Mind.", "Eliminate Distractions.", "Master Your Inner Peace."] },
+      { id: "typed2", words: ["Discipline Over Mood.", "Clarity Before Speed.", "You First, Then the World."] }
+    ];
 
-    function type() {
-      const element = document.getElementById('typed');
-      if (!element) return;
-      const currentWord = words[i];
-      element.textContent = currentWord.substring(0, j) + (j < currentWord.length ? "|" : "");
-
-      if (!isDeleting && j < currentWord.length) {
-        j++;
-        setTimeout(type, 100);
-      } else if (isDeleting && j > 0) {
-        j--;
-        setTimeout(type, 50);
-      } else {
-        if (!isDeleting) {
-          isDeleting = true;
-          setTimeout(type, 1200);
+    texts.forEach(set => {
+      let i = 0, j = 0, isDeleting = false;
+      const element = document.getElementById(set.id);
+      function type() {
+        const currentWord = set.words[i];
+        element.textContent = currentWord.substring(0, j) + (j < currentWord.length ? "|" : "");
+        if (!isDeleting && j < currentWord.length) {
+          j++;
+          setTimeout(type, 100);
+        } else if (isDeleting && j > 0) {
+          j--;
+          setTimeout(type, 50);
         } else {
-          isDeleting = false;
-          i = (i + 1) % words.length;
-          setTimeout(type, 200);
+          if (!isDeleting) {
+            isDeleting = true;
+            setTimeout(type, 1200);
+          } else {
+            isDeleting = false;
+            i = (i + 1) % set.words.length;
+            setTimeout(type, 200);
+          }
         }
       }
-    }
+      type();
+    });
 
+    // Swipe for mobile
     let startX = 0;
     const slider = document.getElementById("slider");
     document.addEventListener("touchstart", e => {
       startX = e.touches[0].clientX;
     });
-
     document.addEventListener("touchend", e => {
       let endX = e.changedTouches[0].clientX;
       let deltaX = endX - startX;
-
       if (deltaX < -50) {
         slider.style.transform = "translateX(-50%)";
       } else if (deltaX > 50) {
@@ -232,7 +254,7 @@ a.download-btn:hover {
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("bgVideo");
       if (video) video.playbackRate = 0.5;
-      type();
     });
-  </script></body>
+  </script>
+</body>
 </html>
