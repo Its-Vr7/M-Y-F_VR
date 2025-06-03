@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Download 'Kill Chaos: Think Like a Monk' — a free eBook to help you eliminate distractions, sharpen your mind, and live with purpose." />
   <title>Kill Chaos — Free eBook Download</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -13,31 +14,28 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    body {
+    html, body {
       background: #0a0f1c;
       color: #f9f9f9;
-      min-height: 140vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      position: relative;
       overflow-x: hidden;
     }
 
-    /* Background Video */
     #bgVideo {
       position: fixed;
       top: 0;
       left: 0;
-      min-width: 100vw;
-      min-height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
       object-fit: cover;
       z-index: -3;
       opacity: 0.12;
     }
 
-    /* Neon Moving Lines */
     .lines {
       position: absolute;
       width: 100%;
@@ -53,8 +51,9 @@
       height: 2px;
       background: #00ffe1;
       box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
-      opacity: 0.08;
+      opacity: 0.07;
       animation: moveLine 15s linear infinite;
+      will-change: transform;
     }
 
     .line:nth-child(1) { top: 20%; transform: rotate(30deg); animation-delay: 0s; }
@@ -75,8 +74,7 @@
       max-width: 850px;
       width: 100%;
       text-align: center;
-      padding: 3rem 2rem 6rem;
-      position: relative;
+      padding: 3rem 2rem 5rem;
       z-index: 1;
       animation: fadeIn 1.5s ease forwards;
     }
@@ -91,7 +89,6 @@
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
       margin-bottom: 2rem;
-      animation: fadeIn 2s ease forwards;
     }
 
     h1 {
@@ -115,7 +112,7 @@
     p {
       font-size: 1.15rem;
       margin-bottom: 2rem;
-      color: #cccccc;
+      color: #d0d0d0;
     }
 
     a.download-btn {
@@ -144,7 +141,6 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      animation: fadeIn 2s ease forwards;
     }
 
     @media(max-width: 600px) {
@@ -173,34 +169,33 @@
 
   <!-- Main Container -->
   <div class="container">
-    <img src="kill-chaos-cover.jpg" alt="Kill Chaos Book Cover" />
+    <img src="kill-chaos-cover.jpg" alt="Kill Chaos eBook Cover" />
     <h1>Kill Chaos: Think Like a Monk</h1>
     <div class="typed-text" id="typed"></div>
     <p>Think like a monk. Move with purpose. Become unstoppable.</p>
-    <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1" download class="download-btn">Download Now</a>
+    <a href="https://www.dropbox.com/scl/fi/t8rxfq4roxfzpp7ufl15q/Kill-Chaos.pdf?rlkey=9ls8wop823kh5zkkput01f52z&st=p87zn5uf&dl=1"
+       class="download-btn"
+       download
+       target="_blank"
+       rel="noopener noreferrer">
+      ₹299 only
+    </a>
 
     <div class="extra-info">
       This book is your guide to building a calm, focused, powerful mindset. It helps you cut through mental noise, take action without hesitation, and stay grounded like a monk in a chaotic world. Free your mind and move with intention.
     </div>
   </div>
 
-  <!-- JavaScript for slow video + typed effect -->
+  <!-- Typing Effect Script -->
   <script>
-    // Slow down the background video
-    document.addEventListener("DOMContentLoaded", function () {
-      const video = document.getElementById("bgVideo");
-      if (video) video.playbackRate = 0.5;
-    });
-
-    // Animated typing effect
     const words = ["Focus Your Mind.", "Eliminate Distractions.", "Master Your Inner Peace."];
-    let i = 0, j = 0, currentWord = '', isDeleting = false;
+    let i = 0, j = 0, isDeleting = false;
 
     function type() {
       const element = document.getElementById('typed');
       if (!element) return;
 
-      currentWord = words[i];
+      const currentWord = words[i];
       element.textContent = currentWord.substring(0, j) + (j < currentWord.length ? "|" : "");
 
       if (!isDeleting && j < currentWord.length) {
@@ -208,15 +203,24 @@
         setTimeout(type, 100);
       } else if (isDeleting && j > 0) {
         j--;
-        setTimeout(type, 60);
+        setTimeout(type, 50);
       } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) i = (i + 1) % words.length;
-        setTimeout(type, 1200);
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(type, 1200);
+        } else {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+          setTimeout(type, 200);
+        }
       }
     }
 
-    document.addEventListener("DOMContentLoaded", type);
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("bgVideo");
+      if (video) video.playbackRate = 0.5;
+      type();
+    });
   </script>
 
 </body>
