@@ -4,59 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Master Yourself First</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
     html, body {
       height: 100%;
+      font-family: 'Outfit', sans-serif;
       background: #050505;
       overflow-x: hidden;
-      color: #fff;
+      color: white;
       position: relative;
     }
 
-    /* Faint Background Image */
-    body::before {
-      content: "";
-      background: url('M-Y-F.jpg') no-repeat center center/cover;
-      opacity: 0.2;
+    #bgVideo {
       position: fixed;
       top: 0;
       left: 0;
-      height: 100%;
       width: 100%;
-      z-index: -3;
+      height: 100%;
+      object-fit: cover;
+      z-index: -10;
+      opacity: 0.15;
+      transition: filter 1s ease;
     }
 
-    /* RGB Lines */
+    #bgVideo.blur {
+      filter: blur(10px);
+    }
+
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url("M-Y-F.jpg") center center/cover no-repeat;
+      opacity: 0.07;
+      z-index: -9;
+    }
+
     .lines {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -2;
-      pointer-events: none;
+      overflow: hidden;
+      z-index: -8;
     }
 
     .line {
       position: absolute;
-      height: 2px;
       width: 200%;
+      height: 2px;
       background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
-      background-size: 1000% 100%;
-      animation: moveLine 10s linear infinite, shiftColor 6s linear infinite;
+      background-size: 400% 100%;
+      animation: moveLine 10s linear infinite, shiftColor 6s ease-in-out infinite;
+      opacity: 0.8;
     }
 
-    .line:nth-child(1) { top: 25%; transform: rotate(15deg); }
-    .line:nth-child(2) { top: 50%; transform: rotate(-20deg); }
-    .line:nth-child(3) { top: 75%; transform: rotate(25deg); }
+    .line:nth-child(1) { top: 20%; transform: rotate(10deg); }
+    .line:nth-child(2) { top: 45%; transform: rotate(-15deg); }
+    .line:nth-child(3) { top: 70%; transform: rotate(20deg); }
 
     @keyframes moveLine {
       0% { left: -100%; }
@@ -70,36 +84,37 @@
 
     .container {
       max-width: 500px;
-      margin: 8rem auto 5rem;
+      margin: 8rem auto 3rem;
       padding: 2rem;
       text-align: center;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
     }
 
     .container img {
-      width: 180px;
+      width: 200px;
       border-radius: 12px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
     }
 
     h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: #00ffe1;
+      color: #ffffff;
     }
 
     .typed-text {
       font-size: 1.1rem;
       color: #00ffe1;
       margin-bottom: 1.5rem;
-      min-height: 24px;
       font-weight: 500;
+      min-height: 24px;
     }
 
     p {
@@ -132,11 +147,11 @@
     }
 
     footer {
-      margin-top: 4rem;
       text-align: center;
-      font-size: 0.85rem;
       color: #fff;
-      opacity: 0.6;
+      font-size: 0.85rem;
+      padding: 2rem 1rem 1rem;
+      opacity: 0.4;
     }
 
     @media (max-width: 600px) {
@@ -151,14 +166,23 @@
 </head>
 <body>
 
-  <!-- RGB Lines -->
+  <!-- Background Video -->
+  <video autoplay muted playsinline id="bgVideo">
+    <source src="bgvideo.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Background Image -->
+  <div class="bg-image"></div>
+
+  <!-- RGB Moving Lines -->
   <div class="lines">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
   </div>
 
-  <!-- eBook Card -->
+  <!-- eBook Content -->
   <div class="container">
     <img src="M-Y-F.jpg" alt="Master Yourself First Cover" />
     <h1>Master Yourself First</h1>
@@ -171,11 +195,10 @@
     </div>
   </div>
 
-  <footer>
-    © 2025 Master Yourself First. All rights reserved.
-  </footer>
+  <!-- Footer -->
+  <footer>© 2025 Master Yourself First. All rights reserved.</footer>
 
-  <!-- Typing Effect -->
+  <!-- Typing Effect Script -->
   <script>
     const phrases = [
       "Focus Your Mind.",
@@ -202,7 +225,22 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", type);
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("bgVideo");
+      type();
+
+      video.playbackRate = 0.75;
+
+      // Blur at video end before loop
+      video.addEventListener("ended", () => {
+        video.classList.add("blur");
+        setTimeout(() => {
+          video.currentTime = 0;
+          video.play();
+          video.classList.remove("blur");
+        }, 1000);
+      });
+    });
   </script>
 
 </body>
