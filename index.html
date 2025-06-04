@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Master Yourself First - A free self-mastery eBook to help you conquer your mind, focus, and inner peace.">
   <title>Master Yourself First</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -14,11 +16,16 @@
 
     html, body {
       height: 100%;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #000;
       color: white;
       overflow-x: hidden;
       position: relative;
+    }
+
+    video, .bg-image, .lines {
+      will-change: transform;
+      contain: layout;
     }
 
     /* Background video */
@@ -30,7 +37,7 @@
       height: 100vh;
       object-fit: cover;
       z-index: -10;
-      opacity: 70;
+      opacity: 0.2;
       transition: filter 1s ease;
     }
 
@@ -38,7 +45,6 @@
       filter: blur(10px);
     }
 
-    /* Faint ebook image overlay */
     .bg-image {
       position: fixed;
       top: 0;
@@ -46,11 +52,10 @@
       width: 100%;
       height: 100%;
       background: url("M-Y-F.jpg") center center/cover no-repeat;
-      opacity: 57;
+      opacity: 0.07;
       z-index: -9;
     }
 
-    /* RGB lines animation */
     .lines {
       position: fixed;
       top: 0;
@@ -85,9 +90,9 @@
       100% { background-position: 100% 50%; }
     }
 
-    .container {
+    main.container {
       max-width: 500px;
-      margin: 9rem auto 3rem;
+      margin: clamp(4rem, 10vh, 9rem) auto 3rem;
       padding: 2rem;
       text-align: center;
       background: rgba(255, 255, 255, 0.03);
@@ -97,8 +102,9 @@
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
     }
 
-    .container img {
-      width: 200px;
+    main.container img {
+      max-width: 100%;
+      height: auto;
       border-radius: 12px;
       margin-bottom: 1.5rem;
       box-shadow: 0 10px 25px rgba(0, 255, 255, 0.12);
@@ -146,7 +152,7 @@
     .extra-info {
       margin-top: 1.5rem;
       font-size: 0.95rem;
-      color: #aaa;
+      color: #ccc;
     }
 
     footer {
@@ -158,10 +164,11 @@
     }
 
     @media (max-width: 600px) {
-      .container {
+      main.container {
         margin-top: 5rem;
         padding: 1.5rem;
       }
+
       h1 { font-size: 1.5rem; }
       .typed-text { font-size: 1rem; }
     }
@@ -170,36 +177,36 @@
 <body>
 
   <!-- Background Video -->
-  <video autoplay muted playsinline id="bgVideo">
-    <source src="/video/bgvideo.mp4" type="video/mp4" />
-    Your browser does not support HTML5 video.
+  <video autoplay muted playsinline loop poster="fallback.jpg" id="bgVideo">
+    <source src="bgvideo.mp4" type="video/mp4" />
   </video>
 
-  <!-- Faint Image Layer -->
-  <div class="bg-image"></div>
+  <!-- Fallback Image Layer -->
+  <div class="bg-image" aria-hidden="true"></div>
 
   <!-- RGB Lines -->
-  <div class="lines">
+  <div class="lines" aria-hidden="true">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
   </div>
 
   <!-- Main Content -->
-  <div class="container">
-    <img src="M-Y-F.jpg" alt="Master Yourself First Cover" />
-    <h1>Master Yourself First</h1>
-    <div class="typed-text" id="typed"></div>
+  <main class="container" role="main">
+    <img src="M-Y-F.jpg" alt="Cover image of the eBook titled Master Yourself First with dark futuristic design" />
+    <h1 role="heading" aria-level="1">Master Yourself First</h1>
+    <div class="typed-text" id="typed" aria-live="polite"></div>
     <p>Before you master life, master yourself. Discipline, clarity, and mental control start here.</p>
     <a href="https://www.dropbox.com/scl/fi/76fvq4nrc1h0jw6blowa1/Master-Yourself-First.pdf?rlkey=39sjce8263zncsdsol3cjvhq1&st=l0p685in&dl=1"
-       class="download-btn" target="_blank" rel="noopener noreferrer">Download Now</a>
+       class="download-btn" role="button" aria-label="Download the Master Yourself First eBook PDF"
+       target="_blank" rel="noopener noreferrer">Download Now</a>
     <div class="extra-info">
       Learn to rule your mind, strengthen your willpower, and become emotionally unshakable.
     </div>
-  </div>
+  </main>
 
   <!-- Footer -->
-  <footer>© 2025 Master Yourself First. All rights reserved.</footer>
+  <footer role="contentinfo">© 2025 Master Yourself First. All rights reserved.</footer>
 
   <!-- Typing Text Script -->
   <script>
@@ -212,12 +219,14 @@
 
     function type() {
       const element = document.getElementById('typed');
+      if (!element) return;
+
       const word = phrases[i];
       element.textContent = word.substring(0, j) + (j < word.length ? "|" : "");
 
       if (!isDeleting && j < word.length) {
         j++;
-        setTimeout(type, 100);
+        setTimeout(type, Math.random() * 150 + 50);
       } else if (isDeleting && j > 0) {
         j--;
         setTimeout(type, 50);
@@ -232,10 +241,8 @@
       const video = document.getElementById("bgVideo");
       type();
 
-      // Make the video smoother and slow
       video.playbackRate = 0.75;
 
-      // Blur transition at end
       video.addEventListener("ended", () => {
         video.classList.add("blur");
         setTimeout(() => {
