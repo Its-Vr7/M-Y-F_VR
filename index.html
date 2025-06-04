@@ -9,6 +9,7 @@
   <meta name="author" content="its-vr7">
   <link rel="icon" href="M-Y-F.jpg" type="image/jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -22,7 +23,6 @@
       background: #000;
       color: white;
       overflow-x: hidden;
-      position: relative;
     }
 
     /* Background video */
@@ -34,15 +34,11 @@
       height: 100vh;
       object-fit: cover;
       z-index: -10;
-      opacity: 0.2;
-      transition: filter 1s ease;
+      opacity: 1;
+      pointer-events: none;
     }
 
-    #bgVideo.blur {
-      filter: blur(10px);
-    }
-
-    /* Faint ebook image overlay */
+    /* Transparent overlay image */
     .bg-image {
       position: fixed;
       top: 0;
@@ -50,7 +46,7 @@
       width: 100%;
       height: 100%;
       background: url("M-Y-F.jpg") center center/cover no-repeat;
-      opacity: 0.07;
+      opacity: 0.06;
       z-index: -9;
     }
 
@@ -94,7 +90,7 @@
       margin: 9rem auto 3rem;
       padding: 2rem;
       text-align: center;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(0, 0, 0, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       backdrop-filter: blur(12px);
@@ -174,9 +170,9 @@
 <body>
 
   <!-- Background Video -->
-  <video autoplay muted playsinline loop id="bgVideo">
+  <video autoplay muted loop playsinline id="bgVideo">
     <source src="ZOOOOOO.mp4" type="video/mp4" />
-    <p style="color:white; text-align:center;">Your browser doesn't support HTML5 video.</p>
+    Your browser doesn't support HTML5 video.
   </video>
 
   <!-- Faint Image Layer -->
@@ -235,8 +231,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("bgVideo");
       type();
-
-      // Make the video smoother and slow
       video.playbackRate = 0.75;
     });
   </script>
