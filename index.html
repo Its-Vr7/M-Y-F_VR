@@ -15,21 +15,22 @@
     html, body {
       height: 100%;
       font-family: 'Outfit', sans-serif;
-      background: #050505;
-      overflow-x: hidden;
+      background: #000;
       color: white;
+      overflow-x: hidden;
       position: relative;
     }
 
+    /* Background video */
     #bgVideo {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       z-index: -10;
-      opacity: 0.15;
+      opacity: 0.2;
       transition: filter 1s ease;
     }
 
@@ -37,17 +38,19 @@
       filter: blur(10px);
     }
 
+    /* Faint ebook image overlay */
     .bg-image {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       background: url("M-Y-F.jpg") center center/cover no-repeat;
       opacity: 0.07;
       z-index: -9;
     }
 
+    /* RGB lines animation */
     .lines {
       position: fixed;
       top: 0;
@@ -61,16 +64,16 @@
     .line {
       position: absolute;
       width: 200%;
-      height: 2px;
+      height: 1.5px;
       background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
       background-size: 400% 100%;
       animation: moveLine 10s linear infinite, shiftColor 6s ease-in-out infinite;
-      opacity: 0.8;
+      opacity: 0.6;
     }
 
-    .line:nth-child(1) { top: 20%; transform: rotate(10deg); }
-    .line:nth-child(2) { top: 45%; transform: rotate(-15deg); }
-    .line:nth-child(3) { top: 70%; transform: rotate(20deg); }
+    .line:nth-child(1) { top: 25%; transform: rotate(10deg); }
+    .line:nth-child(2) { top: 50%; transform: rotate(-12deg); }
+    .line:nth-child(3) { top: 75%; transform: rotate(18deg); }
 
     @keyframes moveLine {
       0% { left: -100%; }
@@ -84,21 +87,21 @@
 
     .container {
       max-width: 500px;
-      margin: 8rem auto 3rem;
+      margin: 9rem auto 3rem;
       padding: 2rem;
       text-align: center;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
     }
 
     .container img {
       width: 200px;
       border-radius: 12px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.12);
     }
 
     h1 {
@@ -106,7 +109,7 @@
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: #ffffff;
+      color: #fff;
     }
 
     .typed-text {
@@ -172,17 +175,17 @@
     Your browser does not support HTML5 video.
   </video>
 
-  <!-- Background Image -->
+  <!-- Faint Image Layer -->
   <div class="bg-image"></div>
 
-  <!-- RGB Moving Lines -->
+  <!-- RGB Lines -->
   <div class="lines">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
   </div>
 
-  <!-- eBook Content -->
+  <!-- Main Content -->
   <div class="container">
     <img src="M-Y-F.jpg" alt="Master Yourself First Cover" />
     <h1>Master Yourself First</h1>
@@ -198,7 +201,7 @@
   <!-- Footer -->
   <footer>© 2025 Master Yourself First. All rights reserved.</footer>
 
-  <!-- Typing Effect Script -->
+  <!-- Typing Text Script -->
   <script>
     const phrases = [
       "Focus Your Mind.",
@@ -229,9 +232,10 @@
       const video = document.getElementById("bgVideo");
       type();
 
+      // Make the video smoother and slow
       video.playbackRate = 0.75;
 
-      // Blur at video end before loop
+      // Blur transition at end
       video.addEventListener("ended", () => {
         video.classList.add("blur");
         setTimeout(() => {
