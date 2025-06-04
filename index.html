@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Master Yourself First</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -15,47 +16,56 @@
 
     html, body {
       height: 100%;
-      background: #010101;
+      background: #050505;
       overflow-x: hidden;
       color: #fff;
     }
 
-    #bgVideo {
+    /* Faint eBook cover background */
+    .bg-cover-image {
       position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -10;
-      opacity: 0.06;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60vw;
+      max-width: 800px;
+      height: auto;
+      opacity: 0.15; /* About 15%, you can increase if you want it more visible */
+      pointer-events: none;
+      user-select: none;
+      z-index: -2;
+      filter: brightness(0.65);
+      mix-blend-mode: screen;
     }
 
-    /* Sharp RGB Lines */
+    /* Sharp RGB animated lines background */
     .lines {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -5;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
     }
 
     .line {
       position: absolute;
       width: 200%;
-      height: 1px;
-      background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
-      background-size: 500% 100%;
+      height: 2px;
+      background: linear-gradient(270deg, red, yellow, lime, cyan, blue, magenta, red);
+      background-size: 1000% 100%;
+      animation: moveLine 10s linear infinite, shiftColor 5s linear infinite;
       opacity: 1;
-      animation: moveLine 15s linear infinite, shiftColor 6s linear infinite;
-      filter: brightness(180%) contrast(150%);
+      filter: contrast(150%) saturate(150%);
     }
 
-    .line:nth-child(1) { top: 20%; transform: rotate(10deg); }
-    .line:nth-child(2) { top: 50%; transform: rotate(-15deg); }
-    .line:nth-child(3) { top: 80%; transform: rotate(20deg); }
+    /* Multiple lines with different rotations and delays */
+    .line:nth-child(1) { top: 20%; transform: rotate(15deg); animation-delay: 0s; }
+    .line:nth-child(2) { top: 45%; transform: rotate(-20deg); animation-delay: 2s; }
+    .line:nth-child(3) { top: 70%; transform: rotate(25deg); animation-delay: 4s; }
+    .line:nth-child(4) { top: 85%; transform: rotate(-15deg); animation-delay: 6s; }
 
     @keyframes moveLine {
       0% { left: -100%; }
@@ -67,99 +77,115 @@
       100% { background-position: 100% 50%; }
     }
 
+    /* Content container */
     .container {
       max-width: 480px;
-      margin: 7rem auto 6rem;
-      padding: 2rem;
+      margin: 6rem auto 5rem;
+      padding: 2rem 2.5rem;
       text-align: center;
-      background: rgba(0, 0, 0, 0.4);
-      border: 2px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.12);
       border-radius: 20px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 50px rgba(0, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+      color: #ddd;
+      position: relative;
+      z-index: 1; /* Make sure container is above backgrounds */
     }
 
     .container img {
       width: 200px;
-      border-radius: 16px;
+      border-radius: 12px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.25);
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
+      position: relative;
+      z-index: 2;
     }
 
+    /* Heading without glow */
     h1 {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2rem;
       margin-bottom: 1rem;
-      color: #00ffee;
-      text-shadow: 0 0 12px #00ffee, 0 0 24px #00ffee;
-      letter-spacing: 1px;
+      color: #00ffe1;
+      text-shadow: none;
+      position: relative;
+      z-index: 2;
     }
 
     .typed-text {
       font-size: 1.1rem;
-      font-weight: 600;
       color: #00ffe1;
       margin-bottom: 1.5rem;
-      text-shadow: 0 0 6px #00ffe1;
       min-height: 24px;
+      font-weight: 500;
+      text-shadow: 0 0 6px #00ffe1;
+      position: relative;
+      z-index: 2;
     }
 
     p {
       font-size: 1rem;
       color: #ccc;
       margin-bottom: 2rem;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
     }
 
     .download-btn {
       display: inline-block;
-      padding: 0.85rem 2rem;
+      padding: 0.8rem 2rem;
       border-radius: 40px;
       font-weight: 600;
       background: linear-gradient(135deg, #00ff73, #00e5ff);
       color: #000;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(0, 255, 200, 0.25);
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.25);
+      position: relative;
+      z-index: 2;
     }
 
     .download-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(0, 255, 200, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 255, 200, 0.45);
     }
 
     .extra-info {
       margin-top: 1.5rem;
       font-size: 0.95rem;
       color: #aaa;
+      line-height: 1.4;
+      position: relative;
+      z-index: 2;
     }
 
     @media (max-width: 600px) {
       .container {
-        margin-top: 5rem;
-        padding: 1.5rem;
+        margin-top: 4rem;
+        padding: 1.5rem 1.8rem;
       }
-      h1 { font-size: 1.7rem; }
+      h1 { font-size: 1.5rem; }
       .typed-text { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Video -->
-  <video autoplay muted loop playsinline id="bgVideo">
-    <source src="3194277-hd_1920_1080_30fps.mp4" type="video/mp4" />
-    Your browser does not support HTML5 video.
-  </video>
+  <!-- Faint eBook cover in background -->
+  <img src="M-Y-F.jpg" alt="Master Yourself First Background" class="bg-cover-image" />
 
-  <!-- Sharp RGB Lines -->
+  <!-- RGB Moving Lines Background -->
   <div class="lines">
+    <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
   </div>
 
-  <!-- eBook Card -->
+  <!-- eBook Container -->
   <div class="container">
     <img src="M-Y-F.jpg" alt="Master Yourself First Cover" />
     <h1>Master Yourself First</h1>
@@ -188,7 +214,7 @@
 
       if (!isDeleting && j < word.length) {
         j++;
-        setTimeout(type, 90);
+        setTimeout(type, 100);
       } else if (isDeleting && j > 0) {
         j--;
         setTimeout(type, 50);
@@ -200,7 +226,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("bgVideo").playbackRate = 0.5;
       type();
     });
   </script>
