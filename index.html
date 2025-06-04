@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Master Yourself First</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
   <style>
-    /* Reset and base styles */
     * {
       margin: 0;
       padding: 0;
@@ -14,14 +13,13 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    body, html {
+    html, body {
       height: 100%;
-      background: #050505; /* Darker background */
+      background: #010101;
       overflow-x: hidden;
       color: #fff;
     }
 
-    /* Background Video */
     #bgVideo {
       position: fixed;
       top: 0;
@@ -29,35 +27,35 @@
       min-width: 100%;
       min-height: 100%;
       object-fit: cover;
-      z-index: -5;
-      opacity: 0.1;
+      z-index: -10;
+      opacity: 0.06;
     }
 
-    /* RGB Animated Lines */
+    /* Sharp RGB Lines */
     .lines {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -4;
-      overflow: hidden;
+      z-index: -5;
       pointer-events: none;
     }
 
     .line {
       position: absolute;
       width: 200%;
-      height: 2px;
-      background: linear-gradient(270deg, red, yellow, lime, cyan, blue, magenta, red);
-      background-size: 1000% 100%;
-      animation: moveLine 10s linear infinite, shiftColor 5s linear infinite;
-      opacity: 0.2;
+      height: 1px;
+      background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
+      background-size: 500% 100%;
+      opacity: 1;
+      animation: moveLine 15s linear infinite, shiftColor 6s linear infinite;
+      filter: brightness(180%) contrast(150%);
     }
 
-    .line:nth-child(1) { top: 25%; transform: rotate(20deg); }
-    .line:nth-child(2) { top: 50%; transform: rotate(-25deg); }
-    .line:nth-child(3) { top: 75%; transform: rotate(30deg); }
+    .line:nth-child(1) { top: 20%; transform: rotate(10deg); }
+    .line:nth-child(2) { top: 50%; transform: rotate(-15deg); }
+    .line:nth-child(3) { top: 80%; transform: rotate(20deg); }
 
     @keyframes moveLine {
       0% { left: -100%; }
@@ -69,43 +67,42 @@
       100% { background-position: 100% 50%; }
     }
 
-    /* Container Styles */
     .container {
-      max-width: 500px;
-      margin: 8rem auto 5rem;
+      max-width: 480px;
+      margin: 7rem auto 6rem;
       padding: 2rem;
       text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 50px rgba(0, 255, 255, 0.1);
     }
 
     .container img {
       width: 200px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+      border-radius: 16px;
       margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.25);
     }
 
     h1 {
-      font-size: 2rem;
-      font-weight: 700;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
       margin-bottom: 1rem;
-      background: linear-gradient(to right, #00ffe1, #00ff73);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 8px #00ffe1;
+      color: #00ffee;
+      text-shadow: 0 0 12px #00ffee, 0 0 24px #00ffee;
+      letter-spacing: 1px;
     }
 
     .typed-text {
       font-size: 1.1rem;
+      font-weight: 600;
       color: #00ffe1;
       margin-bottom: 1.5rem;
+      text-shadow: 0 0 6px #00ffe1;
       min-height: 24px;
-      font-weight: 500;
-      text-shadow: 0 0 8px #00ffe1;
     }
 
     p {
@@ -116,19 +113,19 @@
 
     .download-btn {
       display: inline-block;
-      padding: 0.8rem 2rem;
+      padding: 0.85rem 2rem;
       border-radius: 40px;
       font-weight: 600;
       background: linear-gradient(135deg, #00ff73, #00e5ff);
       color: #000;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 255, 200, 0.25);
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.25);
     }
 
     .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 25px rgba(0, 255, 200, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 200, 0.4);
     }
 
     .extra-info {
@@ -140,11 +137,9 @@
     @media (max-width: 600px) {
       .container {
         margin-top: 5rem;
-        margin-bottom: 3rem;
         padding: 1.5rem;
       }
-
-      h1 { font-size: 1.5rem; }
+      h1 { font-size: 1.7rem; }
       .typed-text { font-size: 1rem; }
     }
   </style>
@@ -157,7 +152,7 @@
     Your browser does not support HTML5 video.
   </video>
 
-  <!-- RGB Moving Lines -->
+  <!-- Sharp RGB Lines -->
   <div class="lines">
     <div class="line"></div>
     <div class="line"></div>
@@ -173,11 +168,11 @@
     <a href="https://www.dropbox.com/scl/fi/76fvq4nrc1h0jw6blowa1/Master-Yourself-First.pdf?rlkey=39sjce8263zncsdsol3cjvhq1&st=l0p685in&dl=1"
        class="download-btn" target="_blank" rel="noopener noreferrer">Download Now</a>
     <div class="extra-info">
-      Learn to rule your mind, strengthen your willpower, and become emotionally unshakable. This guide is your foundation.
+      Learn to rule your mind, strengthen your willpower, and become emotionally unshakable.
     </div>
   </div>
 
-  <!-- Typing Effect -->
+  <!-- Typing Effect Script -->
   <script>
     const phrases = [
       "Focus Your Mind.",
@@ -193,20 +188,19 @@
 
       if (!isDeleting && j < word.length) {
         j++;
-        setTimeout(type, 100);
+        setTimeout(type, 90);
       } else if (isDeleting && j > 0) {
         j--;
         setTimeout(type, 50);
       } else {
         isDeleting = !isDeleting;
         if (!isDeleting) i = (i + 1) % phrases.length;
-        setTimeout(type, 800);
+        setTimeout(type, 1000);
       }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const video = document.getElementById("bgVideo");
-      if (video) video.playbackRate = 0.5;
+      document.getElementById("bgVideo").playbackRate = 0.5;
       type();
     });
   </script>
