@@ -9,7 +9,6 @@
   <meta name="author" content="its-vr7">
   <link rel="icon" href="M-Y-F.jpg" type="image/jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
@@ -23,66 +22,23 @@
       background: #000;
       color: white;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Background video */
-    #bgVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -10;
-      opacity: 1;
-      pointer-events: none;
-    }
-
-    /* Transparent overlay image */
-    .bg-image {
+    .video-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("M-Y-F.jpg") center center/cover no-repeat;
-      opacity: 0.06;
-      z-index: -9;
-    }
-
-    /* RGB lines animation */
-    .lines {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
       overflow: hidden;
-      z-index: -8;
+      z-index: -1;
     }
 
-    .line {
-      position: absolute;
-      width: 200%;
-      height: 1.5px;
-      background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
-      background-size: 400% 100%;
-      animation: moveLine 10s linear infinite, shiftColor 6s ease-in-out infinite;
-      opacity: 0.6;
-    }
-
-    .line:nth-child(1) { top: 25%; transform: rotate(10deg); }
-    .line:nth-child(2) { top: 50%; transform: rotate(-12deg); }
-    .line:nth-child(3) { top: 75%; transform: rotate(18deg); }
-
-    @keyframes moveLine {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    @keyframes shiftColor {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    #bgVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .container {
@@ -90,11 +46,13 @@
       margin: 9rem auto 3rem;
       padding: 2rem;
       text-align: center;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.55);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       backdrop-filter: blur(12px);
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+      position: relative;
+      z-index: 1;
     }
 
     .container img {
@@ -155,6 +113,8 @@
       font-size: 0.85rem;
       padding: 2rem 1rem 1rem;
       opacity: 0.4;
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 600px) {
@@ -162,27 +122,19 @@
         margin-top: 5rem;
         padding: 1.5rem;
       }
+
       h1 { font-size: 1.5rem; }
       .typed-text { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
-
   <!-- Background Video -->
-  <video autoplay muted loop playsinline id="bgVideo">
-    <source src="ZOOOOOO.mp4" type="video/mp4" />
-    Your browser doesn't support HTML5 video.
-  </video>
-
-  <!-- Faint Image Layer -->
-  <div class="bg-image" aria-hidden="true"></div>
-
-  <!-- RGB Lines -->
-  <div class="lines" aria-hidden="true">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
+  <div class="video-container">
+    <video autoplay muted playsinline loop id="bgVideo">
+      <source src="ZOOOOOO.mp4" type="video/mp4" />
+      Your browser doesn't support HTML5 video.
+    </video>
   </div>
 
   <!-- Main Content -->
@@ -231,9 +183,10 @@
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("bgVideo");
       type();
+
+      // Smoother, slower video playback
       video.playbackRate = 0.75;
     });
   </script>
-
 </body>
 </html>
